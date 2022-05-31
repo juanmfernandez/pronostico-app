@@ -4,11 +4,11 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 export function Search(){
     const [ params ] = useSearchParams();
     const [cities, setCities] = useState([]);
-    const value = params.get("city");
+    const current_city = params.get("city");
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${value}&limit=5&appid=8a5e9515a6583a0a93a8e614d848ffb5`)
+        fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${current_city}&limit=5&appid=8a5e9515a6583a0a93a8e614d848ffb5`)
             .then(response => response.json())
             .then(data =>{ 
                 setCities( data );
@@ -23,7 +23,7 @@ export function Search(){
 
     return(
         <div>
-            City: {value}
+            City: {current_city}
             {cities != null &&
                         cities.map((city, i) => {
                             return(
