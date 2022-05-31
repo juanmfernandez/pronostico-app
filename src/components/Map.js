@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { MapContainer, TileLayer } from 'react-leaflet';
-
+import { useNavigate } from "react-router-dom";
 
 const center = [-27.471683177971855, -58.887607232352664]
 const zoom = 13
 
 function DisplayPosition({ map }) {
   const [position, setPosition] = useState(() => map.getCenter())
+  const navigate = useNavigate();
 
   const onClick = useCallback(() => {
     map.setView(center, zoom)
@@ -23,10 +24,15 @@ function DisplayPosition({ map }) {
     }
   }, [map, onMove])
 
+  function handleSearchForecastClick(lat, lon, city){
+    navigate(`/forecast?lat=${position.lat.toFixed(4)}&lon=${position.lng.toFixed(4)}`)
+  }
+
   return (
     <p>
-      latitude: {position.lat.toFixed(4)}, longitude: {position.lng.toFixed(4)}{' '}
+      Coordenadas: lat: {position.lat.toFixed(4)}, long: {position.lng.toFixed(4)}{' '}
       <button onClick={onClick}>reset</button>
+      <button onClick={handleSearchForecastClick}>Buscar pronóstico</button>
     </p>
   )
 }

@@ -1,0 +1,71 @@
+.wht-container{
+    border: 2px solid orange;
+    width: 300px;
+    height: 210px;
+    border-radius: 5px;
+    display: grid;
+    align-content: space-between;
+}
+.top {
+    background-color: #ffdb2d;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 3px;
+    padding-left: 10px;
+}
+.current-city {
+    max-width: 160px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1;
+    font-family: "Roboto",Arial,sans-serif!important;
+    margin: 0;
+    letter-spacing: 1px;    
+}
+.current-description{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1;
+    font-family: "Roboto",Arial,sans-serif!important;
+    margin: 0;
+}
+
+.medium{
+    position: relative;
+    background-color: #fff;
+    position: relative;
+    padding: 6.5px 0;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.temp{
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 1;
+    font-family: "Oswald",Arial,sans-serif!important;
+    color: #333;
+    width: auto;
+    letter-spacing: -5px; 
+}
+.details {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 0.3;
+    font-family: "Oswald",Arial,sans-serif!important;
+    color: #333;
+}
+.bottom{
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    line-height: 0.3;
+    font-family: "Oswald",Arial,sans-serif!important;
+    color: #333;
+    padding-bottom: 8px;
+}

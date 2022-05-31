@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from 'react-router-dom';
+import '../custom.css'
 
 export function Forecast(){
     const [ params ] = useSearchParams();
@@ -15,7 +16,6 @@ export function Forecast(){
             .then(response => response.json())
             .then(data =>{ 
                 setCityForecast( data );
-                //console.log("cityForecast: " + JSON.stringify(data))
             })
             .catch(e => console.log("Error: " + e))
     }, []);
@@ -31,24 +31,51 @@ export function Forecast(){
 
     return(
         <div>
-            City: {city}
+            {cityCurrentWeather.weather != null &&
+                /* card estado actual */
+               <div className="wht-container">
+                    <div className="top">
+                        <div>
+                            <h2 className="current-city">{cityCurrentWeather.name}</h2>
+                            <p className="current-description">{cityCurrentWeather.weather[0].description}</p>                            
+                        </div>
+                        <img src={`http://openweathermap.org/img/wn/${cityCurrentWeather.weather[0].icon}@2x.png`} />
+                    </div>
+                    <div className="medium">
+                        <div className="temp">{cityCurrentWeather.main.temp} °C</div>
+                        <div className="details">
+                            <p>{cityCurrentWeather.main.feels_like} °C</p>
+                            <p>{cityCurrentWeather.main.humidity} %</p>
+                            <p>{cityCurrentWeather.main.pressure} hPa</p>
+                        </div>
+                    </div>
+                    <div className="bottom">Estado actual</div>
+                </div>                        
+            }
             {cityForecast.list != null &&
                         cityForecast.list.map((forecast, i) => {
                             return(
-                                        <div key={i} className="poke">
-                                                <div className="card">
-                                                    <ul className="list-group list-group-flush">
-                                                        <li className="list-group-item">{i} Dt: {forecast.dt} </li>
-                                                        <li className="list-group-item">Temp: {forecast.main.temp} °C </li>
-                                                        <li className="list-group-item">Sensación térmica: {forecast.main.feels_like} °C </li>
-                                                        <li className="list-group-item">Presión: {forecast.main.pressure} hPa </li>
-                                                        <li className="list-group-item">Humedad: {forecast.main.humidity} % </li>
-                                                        <li className="list-group-item">Desc: {forecast.weather[0].description} </li>
-                                                        <li className="list-group-item">dt_txt: {forecast.dt_txt} </li>
-                                                        <img src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`} />
-                                                    </ul>
-                                                </div>
+                                /* cards pronostico */
+                                <>
+                                    <div key={i} className="wht-container">
+                                        <div className="top">
+                                            <div>
+                                                <h2 className="current-city">{cityCurrentWeather.name}</h2>
+                                                <p className="current-description">{forecast.weather[0].description}</p>                            
+                                            </div>
+                                            <img src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`} />
                                         </div>
+                                        <div className="medium">
+                                            <div className="temp">{forecast.main.temp} °C</div>
+                                            <div className="details">
+                                                <p>{forecast.main.feels_like} °C</p>
+                                                <p>{forecast.main.pressure} hPa</p>
+                                                <p>{forecast.main.humidity} % </p>
+                                            </div>
+                                        </div>
+                                        <div className="bottom">{forecast.dt_txt}</div>
+                                    </div>   
+                                </>
                             )
                         })
             }
