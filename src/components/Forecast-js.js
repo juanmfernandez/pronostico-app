@@ -18,7 +18,7 @@ export function Forecast(){
                 setCityForecast( data );
             })
             .catch(e => console.log("Error: " + e))
-    }, []);
+    }, [lat, lon]);
     useEffect(() => {
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=es&appid=${apiKey}&units=metric`)        
             .then(response => response.json())
@@ -27,13 +27,13 @@ export function Forecast(){
                 console.log("cityCurrentWeather: " + JSON.stringify(data))
             })
             .catch(e => console.log("Error: " + e))
-    }, []);
+    }, [lat, lon]);
 
     return(
         <div>
             {cityCurrentWeather.weather != null &&
                 /* card estado actual */
-               <div className="wht-container">
+               <div className="wht-container-current">
                     <div className="top">
                         <div>
                             <h2 className="current-city">{cityCurrentWeather.name}</h2>

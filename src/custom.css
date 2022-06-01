@@ -6,6 +6,18 @@
     display: grid;
     align-content: space-between;
 }
+.wht-container-current {
+    border: 2px solid orange;
+    width: 300px;
+    height: 210px;
+    border-radius: 5px;
+    display: grid;
+    align-content: stretch;
+    position: absolute;
+    z-index: 999;
+    top: 18px;
+    left: 60px;
+}
 .top {
     background-color: #ffdb2d;
     display: flex;
@@ -67,5 +79,90 @@
     line-height: 0.3;
     font-family: "Oswald",Arial,sans-serif!important;
     color: #333;
-    padding-bottom: 8px;
+    padding-top: 9px;
+    height: 15px;
+    vertical-align: middle;
+    background: #fff;
+}
+
+/*Search list css*/
+.poke {
+    margin: 9px 9px 9px 9px;
+    color: var(--text-color);
+    overflow: auto;
+}
+.card{
+    width: 12rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+.list-group {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    border-radius: .25rem;
+}
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: .5rem 1rem;
+    color: #212529;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+/*search input*/
+.form-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 999;
+    top: 18px;
+    width: 81%;
+}
+.map>p{
+    position: absolute;
+    z-index: 999;
+    top: 49px;
+    width: 81%;
+}
+.input-search {
+    width: 20%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem 0rem 0rem .25rem;  
+}
+.btn-search {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0rem .25rem .25rem 0rem;
+    border: 1px solid #ced4da;
 }

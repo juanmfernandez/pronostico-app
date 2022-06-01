@@ -13,9 +13,9 @@ export function Child(){
     }
 
     return(
-        <div>
-            <input type={text} ref={searchRef}></input>
-            <button onClick={handleSearchClick}>Search City</button>
+        <div className="form-container">
+            <input className="input-search" type={text} ref={searchRef} placeholder="Ingrese nombre de una cuidad"></input>
+            <button className="btn-search" onClick={handleSearchClick}>Buscar</button>
         </div>
     )
 }

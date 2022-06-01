@@ -2,41 +2,29 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     settings: null,
-    count: 0,
     text: "",
-    usuarios: [],
-    pokemones: []
+    center: [-27.471683177971855, -58.887607232352664],
+    zoom: 13
 }
 
 export const countSlice = createSlice({
     name: 'count',
     initialState,
     reducers: {
-        incrementar: (state) => {
-            return { ...state, count: state.count + 1 };
+        setCenter: (state, action) => {
+            return { ...state, center: action.payload };
         },
-        decrementar: (state) => {
-            return { ...state, count: state.count - 1 };
-        },
-        setUsuarios: (state, action) => {
-            return { ...state, usuarios: action.payload };
-        },
-        setPokemones: (state, action) => {
-            return { ...state, pokemones: action.payload };
+        setZoom: (state, action) => {
+            return { ...state, zoom: action.payload };
         },
     }
 })
 
-export const obtenerPokemonesAsync = () => async (dispatch) => {
-    const response = await fetch('https://pokeapi.co/api/v2/pokemon');
-    const pokemones  = await response.json();
-    dispatch(countSlice.actions.setPokemones(pokemones))    
-};
-export const obtenerUsuariosAsync = () => async (dispatch) => {
-    const response = await fetch('https://randomuser.me/api/');
-    const usuarios = await response.json();
-    dispatch(countSlice.actions.setUsuarios(usuarios))    
-};
+// export const obtenerUsuariosAsync = () => async (dispatch) => {
+//     const response = await fetch('https://randomuser.me/api/');
+//     const usuarios = await response.json();
+//     dispatch(countSlice.actions.setUsuarios(usuarios))    
+// };
 
 export const store = configureStore({
     reducer: countSlice.reducer

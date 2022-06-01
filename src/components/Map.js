@@ -1,11 +1,14 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { MapContainer, TileLayer } from 'react-leaflet';
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-const center = [-27.471683177971855, -58.887607232352664]
-const zoom = 13
+let center = [-27.471683177971855, -58.887607232352664];
+let zoom = 13;
 
 function DisplayPosition({ map }) {
+  center = useSelector((state) => state.center);
+  zoom = useSelector((state) => state.zoom);
   const [position, setPosition] = useState(() => map.getCenter())
   const navigate = useNavigate();
 
@@ -23,6 +26,10 @@ function DisplayPosition({ map }) {
       map.off('move', onMove)
     }
   }, [map, onMove])
+
+  useEffect(() => {
+    onClick()
+  }, [center])
 
   function handleSearchForecastClick(lat, lon, city){
     navigate(`/forecast?lat=${position.lat.toFixed(4)}&lon=${position.lng.toFixed(4)}`)
