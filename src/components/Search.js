@@ -11,7 +11,7 @@ export function Search(){
     const dispatch = useDispatch();
 
     useEffect(() => {
-        fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${current_city}&limit=5&appid=8a5e9515a6583a0a93a8e614d848ffb5`)
+        fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${current_city}&limit=5&appid=8a5e9515a6583a0a93a8e614d848ffb5`)
             .then(response => response.json())
             .then(data =>{ 
                 setCities( data );
