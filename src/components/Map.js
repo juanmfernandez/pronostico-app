@@ -38,8 +38,7 @@ function DisplayPosition({ map }) {
   return (
     <p>
       Coordenadas: lat: {position.lat.toFixed(4)}, long: {position.lng.toFixed(4)}{' '}
-      <button onClick={onClick}>reset</button>
-      <button onClick={handleSearchForecastClick}>Buscar pronóstico</button>
+      <button onClick={handleSearchForecastClick}>Buscar pronóstico aquí</button>
     </p>
   )
 }

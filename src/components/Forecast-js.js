@@ -24,7 +24,7 @@ export function Forecast(){
             .then(response => response.json())
             .then(data =>{ 
                 setcityCurrentWeather( data );
-                console.log("cityCurrentWeather: " + JSON.stringify(data))
+                //console.log("cityCurrentWeather: " + JSON.stringify(data))
             })
             .catch(e => console.log("Error: " + e))
     }, [lat, lon]);
