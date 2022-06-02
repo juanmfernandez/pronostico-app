@@ -1,10 +1,11 @@
 .wht-container{
     border: 2px solid orange;
     width: 300px;
-    height: 210px;
+    height: 214px;
     border-radius: 5px;
     display: grid;
     align-content: space-between;
+    margin-bottom: 10px;
 }
 .wht-container-current {
     border: 2px solid orange;
@@ -17,6 +18,12 @@
     z-index: 999;
     top: 18px;
     left: 60px;
+}
+.forecast-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 .top {
     background-color: #ffdb2d;

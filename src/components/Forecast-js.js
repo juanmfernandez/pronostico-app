@@ -52,33 +52,36 @@ export function Forecast(){
                     <div className="bottom">Estado actual</div>
                 </div>                        
             }
-            {cityForecast.list != null &&
-                        cityForecast.list.map((forecast, i) => {
-                            return(
-                                /* cards pronostico */
-                                <>
-                                    <div key={i} className="wht-container">
-                                        <div className="top">
-                                            <div>
-                                                <h2 className="current-city">{cityCurrentWeather.name}</h2>
-                                                <p className="current-description">{forecast.weather[0].description}</p>                            
-                                            </div>
+            <div className="forecast-container">
+                {cityForecast.list != null &&
+                    cityForecast.list.map((forecast, i) => {
+                        return(
+                            /* cards pronostico */
+                            <>
+                                <div key={i} className="wht-container">
+                                    <div className="top">
+                                        <div>
+                                            <h2 className="current-city">{cityCurrentWeather.name}</h2>
+                                            <p className="current-description">{forecast.weather[0].description}</p>                            
+                                        </div>
                                             <img src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`} />
+                                    </div>
+                                    <div className="medium">
+                                        <div className="temp">{forecast.main.temp} °C</div>
+                                        <div className="details">
+                                            <p>{forecast.main.feels_like} °C</p>
+                                            <p>{forecast.main.pressure} hPa</p>
+                                            <p>{forecast.main.humidity} % </p>
                                         </div>
-                                        <div className="medium">
-                                            <div className="temp">{forecast.main.temp} °C</div>
-                                            <div className="details">
-                                                <p>{forecast.main.feels_like} °C</p>
-                                                <p>{forecast.main.pressure} hPa</p>
-                                                <p>{forecast.main.humidity} % </p>
-                                            </div>
-                                        </div>
-                                        <div className="bottom">{forecast.dt_txt}</div>
-                                    </div>   
-                                </>
-                            )
-                        })
-            }
+                                    </div>
+                                    <div className="bottom">{forecast.dt_txt}</div>
+                                </div>   
+                            </>
+                        )
+                    })
+                }
+            </div>
         </div>
     )
+    
 }
