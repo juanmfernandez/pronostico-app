@@ -34,6 +34,15 @@ export function Forecast(){
         fechaOriginal.setHours(fechaOriginal.getHours() - 3);
         return fechaOriginal.toLocaleString();
       }
+
+    function getCurrentHours(dt){
+        const fecha = new Date(dt * 1000);
+        const hora = fecha.getHours();
+        const minutos = fecha.getMinutes();
+
+        const horaFormateada = `${hora}:${minutos}`;        
+        return horaFormateada;
+    }
     
     return(
         <div>
@@ -55,7 +64,7 @@ export function Forecast(){
                             <p>{cityCurrentWeather.main.pressure} hPa</p>
                         </div>
                     </div>
-                    <div className="bottom">Estado actual</div>
+                    <div className="bottom">Estado actual: {getCurrentHours(cityCurrentWeather.dt)}</div>
                 </div>                        
             }
             <div className="forecast-container">
