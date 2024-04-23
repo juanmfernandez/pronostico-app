@@ -28,7 +28,13 @@ export function Forecast(){
             })
             .catch(e => console.log("Error: " + e))
     }, [lat, lon]);
-
+    
+      function handleDateToLocal(dt){
+        const fechaOriginal = new Date(dt);
+        fechaOriginal.setHours(fechaOriginal.getHours() - 3);
+        return fechaOriginal.toLocaleString();
+      }
+    
     return(
         <div>
             {cityCurrentWeather.weather != null &&
@@ -74,7 +80,7 @@ export function Forecast(){
                                             <p>{forecast.main.humidity} % </p>
                                         </div>
                                     </div>
-                                    <div className="bottom">{forecast.dt_txt}</div>
+                                    <div className="bottom">{handleDateToLocal(forecast.dt_txt)}</div>
                                 </div>   
                             </>
                         )
